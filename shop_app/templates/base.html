@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}TechStore{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+    <header class="site-header">
+        <a class="brand" href="{% url 'home' %}"><span class="brand-mark">ϟ</span> TechStore</a>
+        <nav>
+            <a href="{% url 'home' %}">მთავარი</a>
+            <a href="{% url 'products' %}">პროდუქტები</a>
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    <footer>© 2026 TechStore · ტექნოლოგია შენს ხელთაა</footer>
+</body>
+</html>

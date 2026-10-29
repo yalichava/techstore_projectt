@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}მთავარი | TechStore{% endblock %}
+{% block content %}
+<section class="hero">
+    <div class="hero-copy">
+        <span class="eyebrow"><span class="live-dot"></span> ახალი თაობის ტექნიკა</span>
+        <h1>ტექნოლოგია<br><span>შენს ხელთაა.</span></h1>
+        <p>აღმოაჩინე საყვარელი გაჯეტები, თანამედროვე დიზაინი და ტექნიკა, რომელიც ყოველდღიურობას უფრო მარტივს ხდის.</p>
+        <a href="{% url 'products' %}" class="button">პროდუქტების ნახვა <span>→</span></a>
+        <div class="hero-stats"><div><strong>6+</strong><small>პროდუქტი</small></div><div><strong>100%</strong><small>თანამედროვე სტილი</small></div><div><strong>24/7</strong><small>ონლაინ კატალოგი</small></div></div>
+    </div>
+    <div class="hero-art">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="hero-product"><img src="{% static 'images/laptop.svg' %}" alt="ლეპტოპი"></div>
+        <span class="float-chip chip-one">✦ Smart tech</span><span class="float-chip chip-two">⚡ TechStore</span>
+    </div>
+</section>
+<section class="section-heading"><div><span class="eyebrow">ჩვენი არჩევანი</span><h2>პოპულარული პროდუქტები</h2></div><a class="text-link" href="{% url 'products' %}">ყველას ნახვა ↗</a></section>
+<div class="products-grid">
+    {% for product in products %}
+    <article class="product-card">
+        <div class="product-image"><img src="{% static product.image %}" alt="{{ product.name }}"></div>
+        <div class="product-info"><span class="category">{{ product.category }}</span><h3>{{ product.name }}</h3><p class="description">{{ product.description }}</p><div class="product-bottom"><strong>{{ product.price }} GEL</strong><a class="round-link" href="{% url 'products' %}" aria-label="პროდუქტების ნახვა">↗</a></div></div>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}

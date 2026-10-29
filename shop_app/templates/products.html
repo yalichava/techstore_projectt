@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}პროდუქტები | TechStore{% endblock %}
+{% block content %}
+<section class="catalog-intro">
+    <span class="eyebrow">TECHSTORE / CATALOG</span>
+    <h1>პროდუქტების <span>კატალოგი</span></h1>
+    <p>შეარჩიე შენთვის სასურველი ტექნიკა.</p>
+</section>
+<div class="products-grid catalog-grid">
+    {% for product in products %}
+    <article class="product-card">
+        <div class="product-image"><img src="{% static product.image %}" alt="{{ product.name }}"></div>
+        <div class="product-info">
+            <span class="category">{{ product.category }}</span>
+            <h3>{{ product.name }}</h3>
+            <p class="description">{{ product.description }}</p>
+            <div class="product-bottom"><strong>{{ product.price }} GEL</strong><span class="stock"><i></i> ხელმისაწვდომია</span></div>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+<a href="{% url 'home' %}" class="back-link">← მთავარ გვერდზე დაბრუნება</a>
+{% endblock %}
